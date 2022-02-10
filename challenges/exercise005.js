@@ -73,9 +73,8 @@ const findNeedle = (haystack, searchTerm) => {
    return false;
 };
 
-function getWordFrequencies(str) {
-  if (str === undefined)
-    throw new Error("str is required");
+const getWordFrequencies = str => {
+  if (str === undefined) throw new Error("str is required");
   var punct = /[!"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~-]+/g;//to remove all the punctuation marks
   var strng=str.replace(punct,'').toLowerCase();//to remove capitalization
   var wordArr = strng.split(' ');//convert string into separate words
@@ -86,9 +85,11 @@ function getWordFrequencies(str) {
       if (word in countObj)  countObj[word]+=1;
       else countObj[word]=1;
       //console.log(countObj);
-  }
-  return countObj;
-}
+    }
+    return countObj;
+};
+  
+  
 
 module.exports = {
   findNextNumber,
