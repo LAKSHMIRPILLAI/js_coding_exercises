@@ -6,9 +6,9 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  var total=0;
-  for (var i=0 ;i<arr.length;i++){
-    if (arr[i]%3==0||arr[i]%5==0)
+  let total=0;
+  for (let i=0 ;i<arr.length;i++){
+    if (arr[i]%3===0||arr[i]%5===0)
       total+=arr[i];
   }
   return total;
@@ -21,17 +21,17 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  var x;
-   for (var i=0;i<str.length;i++){
+  let value;
+   for (let i=0;i<str.length;i++){
       let y=str[i].toLowerCase()
       
-      if (y =='c'||y =='g'||y =='t'||y =='a')
-        x=true;
+      if (y ==='c'||y ==='g'||y ==='t'||y ==='a')
+        value=true;
       else 
-      { x=false ;
+      { value=false ;
       break;}
    }
-    return x;
+    return value;
 
 };
 
@@ -42,23 +42,20 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  var x='';
-   for (var i=0;i<str.length;i++){
-      let y=str[i].toLowerCase();
-      
-      if (y =='c'||y =='g'||y =='t'||y =='a')
+   let x='';
+   for (let i=0;i<str.length;i++){
+      let y=str[i].toLowerCase();     
+      if (y ==='c'||y ==='g'||y ==='t'||y ==='a')
         {
-        if (y=='c') x+='G';
-        else if (y=='g') x+='C';
-        else if (y=='t') x+='A';
-        else if(y=='a') x+='T';
+        if (y==='c') x+='G';
+        else if (y==='g') x+='C';
+        else if (y==='t') x+='A';
+        else if(y==='a') x+='T';
         }
       else {
         x="Not Valid" ;
-        break;}
-      
-   }
-
+        break;}   
+    }
     return x;
 };
 
@@ -69,7 +66,7 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
-  var isPrime = true;
+  let isPrime = true;
   if (n>=2){
     for (let i = 2; i < n; i++) {
       if (n % i == 0) {
@@ -97,8 +94,8 @@ const createMatrix = (n, fill) => {
   if (fill === undefined) throw new Error("fill is required");
   let filledArr=[]
   filledArray = new Array(n).fill(fill);
-  var newArr=[]
-  var newArr=new Array(n).fill(filledArray);   
+  let newArr=[]
+  newArr=new Array(n).fill(filledArray);   
   return newArr
 };
 
@@ -117,13 +114,12 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  var len=staff.length;
-  var count=0;
-  for (var i=0;i<len;i++){
-    var staffmem=staff[i];
+  const len=staff.length;
+  let count=0;
+  for (let i=0;i<len;i++){
+    let staffmem=staff[i];
     if (staffmem.rota.includes(day)==true) count+=1;
-  }
-  
+  } 
   return (count>=3);
 };
 

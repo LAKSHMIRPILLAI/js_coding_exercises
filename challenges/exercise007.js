@@ -4,6 +4,12 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  let num =n.toString();
+  let total=0;
+  for (let i=0;i<num.length;i++){
+      total+=Number(num[i]);//convert string back to number
+  }
+  return total;
 };
 
 /**
@@ -17,6 +23,13 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  let arr=[];
+  let i=start;//beginning of the index
+  while(i<=end){
+     arr.push(i);
+     i+=step;
+  }
+  return arr;
 };
 
 /**
@@ -51,6 +64,24 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  const len=users.length;
+  let userList="";
+  for (let i=0;i<len;i++){
+    let usermem=users[i];
+    let lenScreenTime =usermem.screenTime.length;
+    for (let j=0;j<lenScreenTime;j++){
+      if (usermem.screenTime[j].date===date)
+      {
+        let usage=usermem.screenTime[j].usage;
+        let valuesOfScreenTime=Object.values(usage);
+        let sumTotal=Object.values(valuesOfScreenTime).reduce((a, b) => a + b, 0);
+        if (sumTotal>100)
+         userList+=(usermem.username);
+        else userList=null
+      }
+    }
+     }
+    return userList;
 };
 
 /**
@@ -65,6 +96,11 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  let r ="0x"+ hexStr[1] +hexStr[2];
+  let g ="0x"+hexStr[3] + hexStr[4];
+  let b ="0x"+ hexStr[5] + hexStr[6];
+  return "rgb("+parseInt(r,16).toString()+","+parseInt(g,16).toString()+","+parseInt(b,16).toString()+")";
+
 };
 
 /**
@@ -79,6 +115,23 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  const len=board.length;
+  let countx=0;
+  let count0=0;
+  let countNull=0;
+  let result=0;
+  for (let i=0;i<len;i++){
+    for (let j=0;j<len;j++){
+      if(board[i][j]==="X") countx+=1;
+      else if (board[i][j]==="0") count0+=1;
+      else if (board[i][j]===null) countNull+=1;
+    } 
+  }
+  if (count0>countx & count0>countNull) result= "0";
+  else if (countx>count0 & countx>countNull) result= "X";
+  else if (countNull>countx & countNull>count0) result=null;
+  else if (countNull===countx & countNull===count0) result=null;
+  return result
 };
 
 module.exports = {

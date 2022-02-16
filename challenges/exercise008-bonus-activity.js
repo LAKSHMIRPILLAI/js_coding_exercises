@@ -2,21 +2,20 @@
 
 function printColours(colours){
     if (!colours) throw new Error("colour is required");
-    var x=[...colours];
-    return x;
+    return [...colours];
+
 }
 
 function shoppingList(list, newItem){
     if (!list) throw new Error("list is required");
     if (!newItem) throw new Error("newItem is required");
-    var newList=[...list,...newItem];
-    return newList;
+    return [...list,...newItem];
 }
 
 function highestNumber(numbers){
     if (!numbers) throw new Error("numbers are required");
-    var highestNum=Math.max(...numbers);
-    return highestNum;
+    return Math.max(...numbers);
+
 }
 
 function splitThatString(string){
@@ -30,8 +29,7 @@ function splitThatString(string){
 
 function addressLookUp(user){
     if (!user) throw new Error("user is required");
-    var postCode = user?.address?.postcode;//optional chaining for missing object properties
-    return postCode;
+    return user?.address?.postcode;//optional chaining for missing object properties
 }
 
 

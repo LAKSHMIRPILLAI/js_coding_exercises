@@ -1,45 +1,36 @@
 function getFillings(sandwich) {
   if (sandwich === undefined) throw new Error("ingredients is required");
-  var fillings=sandwich.fillings;
-  //console.log(fillings);
-  return fillings;
+  return sandwich.fillings;
 }
 
 function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
-  var loc=person.city;
-  if (loc=='Manchester') return true;
-  else return false;
-
+  const loc=person.city;
+  return (loc==='Manchester') 
 }
 
 function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
-  var numOfBuses=Math.floor(people/40);// number of buses =people /40 (completely divisible)+remaining people in another bus
-  if (people% 40!=0) return numOfBuses+1;
-  else return numOfBuses;
+  return Math.ceil(people/40);// number of buses =people /40 (completely divisible)+remaining people in another bus
 }
 
 function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
-  var len=arr.length;
-  var countSheep=0;
-  for (var i=0;i<len;i++){
-    if (arr[i].toLowerCase()=='sheep')
+  const len=arr.length;
+  let countSheep=0;
+  for (let i=0;i<len;i++){
+    if (arr[i].toLowerCase()==='sheep')
      countSheep+=1;
   }
-  //console.log(countSheep);
   return countSheep;
 }
 
 function hasMPostCode(person) {
   if (person === undefined) throw new Error("person is required");
-  var address=person.address;
-  var postCode=address.postCode;
-  var city=address.city;
-  if (postCode.charAt(0)=='M') 
-    if (city=='Manchester')  return true;
-    else return false;
+  const postCode=person.address.postCode;
+  const city=person.address.city;
+  if (postCode.slice(0,3)==='M16') 
+    return (city=='Manchester');
   else return false;
 }
 
