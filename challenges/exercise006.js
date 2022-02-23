@@ -7,10 +7,10 @@
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
   let total=0;
-  for (let i=0 ;i<arr.length;i++){
-    if (arr[i]%3===0||arr[i]%5===0)
-      total+=arr[i];
-  }
+  arr.forEach(arr=>{
+    if (arr%3===0||arr%5===0)
+      total+=arr;
+  });
   return total;
 };
 
@@ -92,8 +92,7 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
-  let filledArr=[]
-  filledArray = new Array(n).fill(fill);
+  let filledArray = new Array(n).fill(fill);
   let newArr=[]
   newArr=new Array(n).fill(filledArray);   
   return newArr
@@ -114,9 +113,8 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  const len=staff.length;
   let count=0;
-  for (let i=0;i<len;i++){
+  for (let i=0;i<staff.length;i++){
     let staffmem=staff[i];
     if (staffmem.rota.includes(day)==true) count+=1;
   } 

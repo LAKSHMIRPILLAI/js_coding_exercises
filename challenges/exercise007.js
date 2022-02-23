@@ -64,9 +64,8 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
-  const len=users.length;
   let userList="";
-  for (let i=0;i<len;i++){
+  for (let i=0;i<users.length;i++){
     let usermem=users[i];
     let lenScreenTime =usermem.screenTime.length;
     for (let j=0;j<lenScreenTime;j++){
@@ -115,13 +114,12 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-  const len=board.length;
   let countx=0;
   let count0=0;
   let countNull=0;
   let result=0;
-  for (let i=0;i<len;i++){
-    for (let j=0;j<len;j++){
+  for (let i=0;i<board.length;i++){
+    for (let j=0;j<board.length;j++){
       if(board[i][j]==="X") countx+=1;
       else if (board[i][j]==="0") count0+=1;
       else if (board[i][j]===null) countNull+=1;

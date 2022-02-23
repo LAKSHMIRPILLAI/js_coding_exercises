@@ -1,10 +1,9 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-  const len=nums.length;
   let positionOfN=nums.indexOf(n);
   if (positionOfN===-1) return null;//if n is not found
-  else if (positionOfN===len-1) return null;//if n is in the last index position
+  else if (positionOfN===nums.length-1) return null;//if n is in the last index position
   else return nums[nums.indexOf(n)+1];
 
 };
@@ -14,10 +13,7 @@ const count1sand0s = str => {
   let count0=0;
   let count1=0;
   for (let i=0;i<str.length;i++)
-  {
-    if (Number(str[i])===0) count0+=1;
-    else count1+=1;
-  }
+    Number(str[i])===0?  count0+=1:count1+=1;
   return {1:count1,0:count0};
 };
 
@@ -31,9 +27,8 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  const len=arrs.length;
   let total=0;
-  for(let i=0;i<len;i++)
+  for(let i=0;i<arrs.length;i++)
   {
     let x=arrs[i];//get each subarray
     let y=arrs[i].length;//get length of each subarray
@@ -44,9 +39,8 @@ const sumArrays = arrs => {
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  const len=arr.length;
-  if (len>=2){
-     [arr[0], arr[len - 1]] = [arr[len - 1], arr[0]];//swap the first and last element
+  if (arr.length>=2){
+     [arr[0], arr[arr.length - 1]] = [arr[arr.length - 1], arr[0]];//swap the first and last element
       return arr;
   }
   else return arr;
